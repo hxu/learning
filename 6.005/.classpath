@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="ps0/src"/>
+	<classpathentry kind="src" path="ps1/src"/>
+	<classpathentry kind="src" path="ps2/src"/>
+	<classpathentry kind="src" path="ps3/src"/>
+	<classpathentry kind="src" path="ps4/src"/>
+	<classpathentry kind="src" path="ps5/src"/>
+	<classpathentry kind="src" path="ps6/src"/>
+	<classpathentry kind="src" path="ps7/ps7-starting/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
