@@ -1,9 +1,0 @@
-INDEX VERSION 1.126+/home/hxu/src/learning/6.005/.metadata/.plugins/org.eclipse.jdt.core
-1092711313.index
-2939097789.index
-1179432840.index
-827033374.index
-2822952612.index
-3626508843.index
-3745900082.index
-908477191.index
