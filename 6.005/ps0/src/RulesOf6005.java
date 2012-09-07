@@ -76,8 +76,10 @@ public class RulesOf6005 {
 	 * @return a new instance of a Calendar with the date and time set to when the assignment will be due
 	 */
 	public static Calendar extendDeadline(int request, int budget, Calendar duedate){
-		// TODO: Fill in this method, then remove the RuntimeException
-        throw new RuntimeException("extendDeadline not implemented");
+	    int d = Math.min(budget, 3);
+	    d = Math.min(d, request);
+	    duedate.add(Calendar.DAY_OF_MONTH, d);
+	    return duedate;
 	}
 	
 	
