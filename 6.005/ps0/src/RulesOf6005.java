@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -22,8 +24,16 @@ public class RulesOf6005 {
 	 * Example: "Lectures" and "lectures" will both return true.
 	 */
 	public static boolean hasFeature(String name){
-		// TODO: Fill in this method, then remove the RuntimeException
-        throw new RuntimeException("hasFeature not implemented");
+		List<String> features = new ArrayList<String>();
+		features.add("quizzes");
+		features.add("code review");
+		if (features.contains(name.toLowerCase())) {
+		    return true;
+		} else {
+		    return false;
+		}
+		
+		        
 	}
 	
 	
