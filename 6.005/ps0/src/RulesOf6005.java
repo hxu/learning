@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Calendar;
@@ -44,15 +45,19 @@ public class RulesOf6005 {
 	 * 
 	 * Behavior is unspecified if the values are out of range.
 	 * 
-	 * @param quiz
-	 * @param pset
-	 * @param project
-	 * @param participation
+	 * @param quiz - 20% weight
+	 * @param pset - 40% weight
+	 * @param project - 30% weight
+	 * @param participation - 10% weight
 	 * @return the resulting grade out of a hundred
 	 */
 	public static int computeGrade(int quiz, int pset, int project, int participation){
-		// TODO: Fill in this method, then remove the RuntimeException
-        throw new RuntimeException("computeGrade not implemented");
+	    float q = quiz;
+	    float ps = pset;
+	    float pr = project;
+	    float part = participation;
+	    Float grade = new Float((0.2f * q) + (0.4f * ps) + (0.3f * pr) + (0.1f * part));
+	    return Math.round(grade);
 	}
 	
 	
