@@ -31,6 +31,28 @@ public class PiGeneratorTest {
     public void divbyzeroPowerModTest() {
         PiGenerator.powerMod(5, 7, 0);
     }
+    
+    @Test
+    public void computePiInHexTest() {
+        // Pi in hex
+        // 3.243f6a8885a308d313198a2e03707
+        // first five digits, most significant first
+        int[] firstfive = {6, 15, 3, 4, 2};
+        assertArrayEquals(firstfive, PiGenerator.computePiInHex(5));
+    }
+    
+    @Test
+    public void nullComputePiInHexTest() {
+        // check null
+        assertNull(PiGenerator.computePiInHex(-1));
+        
+    }
+    
+    @Test
+    public void zeroComputePiInHexTest() {
+        // Check significance of 0
+        assertArrayEquals(new int[0], PiGenerator.computePiInHex(0));
+    }
 
     // TODO: Write more tests (Problem 1.a, 1.c)
 }
