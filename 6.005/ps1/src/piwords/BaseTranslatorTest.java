@@ -24,6 +24,17 @@ public class BaseTranslatorTest {
     }
     
     @Test
+    public void reallylongBaseTranslatorTest() {
+        //  A longer array
+    }
+    
+    @Test
+    public void identityBaseTranslatorTest() {
+        int[] input = {1,2,5};
+        assertArrayEquals(input, BaseTranslator.convertBase(input,  6, 6, 3));
+    }
+    
+    @Test
     public void negdigitBaseTranslatorTest() {
         // If any digits are negative, expect a null to be returned
         int[] input2 = {1, 0, 1, -1};
