@@ -16,6 +16,14 @@ public class BaseTranslatorTest {
     }
     
     @Test
+    public void longerBaseTranslatorTest() {
+        // Expect .00101 in base-2 to be .15625 in base-10
+        int[] input = {0,0,1,0,1};
+        int[] expectedOutput = {1,5,6,2,5};
+        assertArrayEquals(expectedOutput, BaseTranslator.convertBase(input, 2, 10, 5));
+    }
+    
+    @Test
     public void negdigitBaseTranslatorTest() {
         // If any digits are negative, expect a null to be returned
         int[] input2 = {1, 0, 1, -1};

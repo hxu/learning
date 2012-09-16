@@ -6,9 +6,9 @@ public class TryMath {
      * @param args
      */
     public static void main(String[] args) {
-        int[] a = PiGenerator.computePiInHex(5);
-        for (int i = 0; i < 5; ++i) {
-            System.out.println("i is " + i);
+        int[] input = {0, 0, 1, 0 ,1};
+        int[] a = BaseTranslator.convertBase(input, 2, 10, 5);
+        for (int i = 0; i < a.length ; ++i) {
             System.out.println(a[i]);
         }
     }

@@ -28,12 +28,31 @@ public class BaseTranslator {
      * @param baseA The base that the input array is expressed in.
      * @param baseB The base to translate into.
      * @param precisionB The number of digits of precision the output should
-     *                   have.
+     *                   have
      * @return An array of size precisionB expressing digits in baseB.
      */
     public static int[] convertBase(int[] digits, int baseA,
                                     int baseB, int precisionB) {
-        // TODO: Implement (Problem 2.b)
-        return null;
+        if (baseA < 2 | baseB < 2 | precisionB < 1) {
+            return null;
+        }
+        int[] input = digits.clone();
+        int[] output = new int[precisionB];
+        int carry = 0;
+        int j;
+        int x;
+        
+        for (int i = 1; i <= precisionB; i++) {
+            j = precisionB - i;
+            if (input[j] >= baseA | input[j] < 0) {
+                return null;
+            }
+            x = (input[j] * baseB) + carry;
+            input[j] = x % baseA;
+            carry = x / baseA;
+            output[j] = carry;
+        }
+        
+        return output;
     }
 }
