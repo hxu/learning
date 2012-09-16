@@ -36,8 +36,8 @@ public class PiGeneratorTest {
     public void computePiInHexTest() {
         // Pi in hex
         // 3.243f6a8885a308d313198a2e03707
-        // first five digits, most significant first
-        int[] firstfive = {6, 15, 3, 4, 2};
+        // first five digits, most significant (left most) first
+        int[] firstfive = {2, 4, 3, 15, 6};
         assertArrayEquals(firstfive, PiGenerator.computePiInHex(5));
     }
     

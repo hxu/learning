@@ -16,12 +16,12 @@ public class PiGenerator {
         if (precision < 0) return null;
         
         int[] result = new int[precision];
-        int i = 0;
+        int i = precision - 1;
         
         while (precision > 0) {
             result[i] = PiGenerator.piDigit(precision);
             precision--;
-            i++;
+            i--;
         }
         
         return result;
