@@ -35,6 +35,5 @@ public class DigitsToStringConverterTest {
         int[] input2 = {0, 1, 2, 3};
         assertNull(DigitsToStringConverter.convertDigitsToString(input2, 5, alphabet));
     }
-
-    // TODO: Write more tests (Problem 3.a)
+    
 }
