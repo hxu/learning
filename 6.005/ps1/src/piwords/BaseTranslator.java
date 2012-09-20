@@ -38,21 +38,23 @@ public class BaseTranslator {
         }
         int[] input = digits.clone();
         int[] output = new int[precisionB];
-        int carry = 0;
+        int carry;
         int j;
         int x;
         
         for (int i = 1; i <= precisionB; i++) {
-            j = precisionB - i;
-            if (input[j] >= baseA | input[j] < 0) {
-                return null;
+            carry = 0;
+            for (int k = 0; k < input.length; k++) {
+                j = input.length - 1 - k;
+                if (input[j] >= baseA | input[j] < 0) {
+                    return null;
+                }
+                x = (input[j] * baseB) + carry;
+                input[j] = x % baseA;
+                carry = x / baseA;
             }
-            x = (input[j] * baseB) + carry;
-            input[j] = x % baseA;
-            carry = x / baseA;
-            output[j] = carry;
+            output[i-1] = carry;
         }
-        
         return output;
     }
 }

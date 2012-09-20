@@ -59,10 +59,10 @@ public class BaseTranslatorTest {
     
     @Test
     public void roundingBaseTranslatorTest() {
-        // Check that rounding is correctly implemented if precision leaves off digits
-        // So converting 0.01 in binary to decimal with precision 1 should give 0.3
+        // The algorithm truncates at the precision level
+        // So converting 0.01 in binary to decimal with precision 1 should give 0.2
         int[] input = {0, 1};
-        int[] expectedoutput = {3};
+        int[] expectedoutput = {2};
         assertArrayEquals(expectedoutput, BaseTranslator.convertBase(input, 2, 10, 1));
     }
 
