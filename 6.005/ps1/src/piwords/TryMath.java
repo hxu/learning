@@ -6,9 +6,10 @@ public class TryMath {
      * @param args
      */
     public static void main(String[] args) {
-        char[] input = {'e', 'f', 'g'};
-        String data = new String(input);
-        System.out.println(data);
+        String data = "testingonetwothree";
+        String search = "zz";
+        int result = data.indexOf(search);
+        System.out.println(result);
     }
 
 }
