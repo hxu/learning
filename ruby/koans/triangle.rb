@@ -15,11 +15,25 @@
 #
 def triangle(a, b, c)
     sides = [a, b, c]
-    if sides.uniq.length == 3
+    unique = sides.uniq
+    runsum = 0
+    for x in sides
+        if x <= 0
+            raise TriangleError, "Sides must be >0"
+        end
+    end
+
+    sides.sort!
+    sum = sides.shift + sides.shift
+    if sum <= sides[0]
+        raise TriangleError
+    end
+
+    if unique.length == 3
         return :scalene
-    elsif sides.uniq.length == 2
+    elsif unique.length == 2
         return :isosceles
-    elsif sides.uniq.length == 1
+    elsif unique.length == 1
         return :equilateral
     else
         return nil
