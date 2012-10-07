@@ -30,6 +30,23 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 # Your goal is to write the score method.
 
 def score(dice)
+    # test for illegal rolls
+    if dice.length > 5
+        return nil
+    end
+    if dice.length == 0
+        return 0
+    end
+
+    # convert to a hash
+    a = Hash.new(0)
+    dice.each do |v|
+        a[v] += 1
+    end
+
+    score = 0
+
+    # iterate over the hash and count up the score
   # You need to write this method
 end
 
