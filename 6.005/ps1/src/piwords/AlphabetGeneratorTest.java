@@ -18,6 +18,12 @@ public class AlphabetGeneratorTest {
                 AlphabetGenerator.generateFrequencyAlphabet(
                         10, trainingData));
     }
+    
+    @Test
+    public void ignoredCharFrequencyAlphabetTest() {
+        // Test to make sure that non a-z chars are ignored
+        
+    }
 
     // TODO: Write more tests (Problem 5.a)
 }
