@@ -20,6 +20,19 @@ public class AlphabetGeneratorTest {
     }
     
     @Test
+    public void zeroBaseFrequencyAlphabetTest() {
+    	String[] trainingData = {"aa", "bbc"};
+    	char[] result = {};
+    	assertArrayEquals(result, AlphabetGenerator.generateFrequencyAlphabet(0, trainingData));
+    }
+    
+    @Test
+    public void negativeBaseFrequencyAlphabetTest() {
+    	String[] trainingData = {"aa", "bb"};
+    	assertNull(AlphabetGenerator.generateFrequencyAlphabet(-1, trainingData));
+    }
+    
+    @Test
     public void ignoredCharFrequencyAlphabetTest() {
         // Test to make sure that non a-z chars are ignored
     	String[] trainingData= {"128abc", "cx-!!@#$%&^*&*"};
@@ -43,6 +56,24 @@ public class AlphabetGeneratorTest {
 	@Test
 	public void fractionalFrequencyAlphabetTest() {
 		// How to handle bases that don't divide evenly into the number of letters?
+		// Truncate if too long
+		String[] trainingData = {"abc"};
+		char[] expectedOutput = {'a', 'a', 'b', 'c', 'c'};
+		assertArrayEquals(expectedOutput, AlphabetGenerator.generateFrequencyAlphabet(5, trainingData));
+		
+		// If too short, pad it
+		String[] trainingData1 = {"abcd"};
+		char[] expectedOutput1 = {'a', 'b', 'b', 'c', 'd'};
+		assertArrayEquals(expectedOutput1, AlphabetGenerator.generateFrequencyAlphabet(5, trainingData1));
+		}
+	
+	@Test
+	public void baseLessThanFrequencyAlphabetTest() {
+		// Truncate then calculate frequencies if the the base is less than the number of characters
+		
+		String[] trainingData = {"aaabcd"};
+		char[] expectedOutput = {'a', 'a', 'c'};
+		
+		assertArrayEquals(expectedOutput, AlphabetGenerator.generateFrequencyAlphabet(3, trainingData));
 	}
-
 }

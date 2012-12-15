@@ -2,7 +2,7 @@ package piwords;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.util.Set;
+import java.util.Arrays;
 
 public class AlphabetGenerator {
     /**
@@ -56,10 +56,18 @@ public class AlphabetGenerator {
      */
     public static char[] generateFrequencyAlphabet(int base,
                                                    String[] trainingData) {
-        // TODO: Implement (Problem 5.b)
+        if (base < 0) {
+        	return null;
+        }
+        
+        if (base == 0) {
+        	char[] emptyRes = {}; 
+        	return emptyRes;
+        }
+    	
     	Map<Character, Integer> charMap = new HashMap<Character, Integer>();
     	
-    	// Generate a map of characters
+    	// Generate a map of characters with counts as values
     	for (int i = 0; i < trainingData.length; i++) {
     		char[] charArray = trainingData[i].toCharArray();
     		for (int j = 0; j < charArray.length; j++) {
@@ -77,11 +85,45 @@ public class AlphabetGenerator {
     	}
     	
     	// Collect the keys and calculate the probabilities
-    	Set<Character> keys = charMap.keySet();
+    	Character[] keys = charMap.keySet().toArray(new Character[0]);
+    	System.out.println("Map:" + charMap.toString());
+    	Arrays.sort(keys);
+    	System.out.println("Found keys" + Arrays.toString(keys));
+    	// Truncate if the letters are more than the base
+    	if (base < keys.length) {
+    		System.out.println("Truncating keys");
+    		keys = Arrays.copyOf(keys, base);
+    		System.out.println("New keys: " + Arrays.toString(keys));
+    	}
+    	
+    	int total = 0;
+    	for (char i : keys) {
+    		total += charMap.get(i);
+    	}
+    	System.out.println("Total letters:" + total);
+    	
+    	Map<Character, Float> cumProbs = new HashMap<Character, Float>();
+    	float prior = 0f;
+    	for (char i : keys) {
+    		float prob = (float) charMap.get(i)/total;
+    		cumProbs.put(i, prob + prior);
+    		prior = prior + prob;
+    	}
+    	System.out.println("Cumulative Probs:" + cumProbs);
+    
     	
     	// Write the output array
     	char[] res = new char[base];
-    	
+    	int j = 0;
+    	for (char i : keys) {
+    		int limit = Math.round(cumProbs.get(i) * base)-1;
+    		System.out.println("Putting letter: " + i + " with limit " + limit);
+    		while ((j <= limit) && (j < base)) {
+    			res[j] = i;
+    			j++;
+    		}
+    	}
+    	System.out.println("Final result: " + Arrays.toString(res));
     	return res;
     	
     }
