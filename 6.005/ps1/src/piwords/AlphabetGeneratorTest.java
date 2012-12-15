@@ -22,8 +22,27 @@ public class AlphabetGeneratorTest {
     @Test
     public void ignoredCharFrequencyAlphabetTest() {
         // Test to make sure that non a-z chars are ignored
-        
+    	String[] trainingData= {"128abc", "cx-!!@#$%&^*&*"};
+    	char[] expectedOutput = {'a', 'a', 'b', 'b',
+    							 'c', 'c', 'c', 'c',
+    							 'x', 'x'};
+    	assertArrayEquals(expectedOutput, AlphabetGenerator.generateFrequencyAlphabet(10, trainingData));
+    }
+    
+    @Test
+    public void charOrderFrequencyAlphabetTest() {
+    	// The returned output should be sorted
+    	
+    	String[] trainingData = {"zaz", "xy"};
+    	char[] expectedOutput = {'a', 'a', 'x', 'x',
+    							 'y', 'y', 'z', 'z',
+    							 'z', 'z'};
+    	assertArrayEquals(expectedOutput, AlphabetGenerator.generateFrequencyAlphabet(10, trainingData));
     }
 
-    // TODO: Write more tests (Problem 5.a)
+	@Test
+	public void fractionalFrequencyAlphabetTest() {
+		// How to handle bases that don't divide evenly into the number of letters?
+	}
+
 }

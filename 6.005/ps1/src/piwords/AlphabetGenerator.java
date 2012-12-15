@@ -1,5 +1,9 @@
 package piwords;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
+
 public class AlphabetGenerator {
     /**
      * Given a numeric base, return a char[] that maps every digit that is
@@ -53,6 +57,32 @@ public class AlphabetGenerator {
     public static char[] generateFrequencyAlphabet(int base,
                                                    String[] trainingData) {
         // TODO: Implement (Problem 5.b)
-        return null;
+    	Map<Character, Integer> charMap = new HashMap<Character, Integer>();
+    	
+    	// Generate a map of characters
+    	for (int i = 0; i < trainingData.length; i++) {
+    		char[] charArray = trainingData[i].toCharArray();
+    		for (int j = 0; j < charArray.length; j++) {
+    			char character = charArray[j];
+    			// Ignore anything that is not a-z
+    			if (Character.isLetter(character)) {
+    				char lowerChar = Character.toLowerCase(character);
+    				if (charMap.containsKey(lowerChar)) {
+    					charMap.put(lowerChar, charMap.get(lowerChar) + 1);
+    				} else {
+    					charMap.put(lowerChar, 1);
+    				}
+    			}
+    		}
+    	}
+    	
+    	// Collect the keys and calculate the probabilities
+    	Set<Character> keys = charMap.keySet();
+    	
+    	// Write the output array
+    	char[] res = new char[base];
+    	
+    	return res;
+    	
     }
 }
